@@ -6,7 +6,7 @@ using namespace sf;
 class GameObject {
 protected:
 	float x, y; //object coordinates
-	int spriteHeight, spriteWidth; //sprite size
+	float spriteHeight, spriteWidth; //sprite size
 	bool existance; //check, if object exists
 	int windowHeight, windowWidth; //window size
 	Texture texture; //object texture
@@ -19,10 +19,10 @@ public:
 	Sprite getSprite() {
 		return sprite;
 	}
-	int getSpriteHeight() {
+	float getSpriteHeight() {
 		return spriteHeight;
 	}
-	int getSpriteWidth() {
+	float getSpriteWidth() {
 		return spriteWidth;
 	}
 	void setExistance(bool e) {
@@ -33,10 +33,10 @@ public:
 	}
 	GameObject(String Name, float X, float Y, int W, int H);
 	void update(float time);
-	int getX() {
+	float getX() {
 		return x;
 	}
-	int getY() {
+	float getY() {
 		return y;
 	}
 	String getName() {

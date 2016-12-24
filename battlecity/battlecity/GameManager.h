@@ -6,6 +6,7 @@ using namespace sf;
 #include <vector>
 #include "Bullet.h"
 #include "Player.h"
+#include "Control.h"
 
 class GameManager
 {
@@ -13,7 +14,7 @@ private:
 	Clock clock;
 	float time;
 	Window window;
-	int windowHeight, windowWidth;
+	float windowHeight, windowWidth;
 	std::list<Bullet*> bullets;
 	std::list<Bullet*>::iterator bIterator;
 public:

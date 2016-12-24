@@ -1,6 +1,6 @@
 #pragma once
-#include "SFML\Graphics.hpp"
 #include "TextureManager.h"
+#include "SFML\Graphics.hpp"
 using namespace sf;
 
 class LevelBuilder

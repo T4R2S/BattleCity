@@ -59,7 +59,6 @@ void GameManager::update(Player &p) {
 			bIterator = bullets.erase(bIterator);
 		}
 	}
-
 }
 
 

@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML\Graphics.hpp>
+#include"SFML\Graphics.hpp"
 using namespace sf;
 
 const int HEIGHT_MAP = 25;//размер карты высота
