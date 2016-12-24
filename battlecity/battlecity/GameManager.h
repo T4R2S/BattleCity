@@ -7,6 +7,8 @@ using namespace sf;
 #include "Bullet.h"
 #include "Player.h"
 #include "Control.h"
+#include "Level1.h"
+#include <iostream>
 
 class GameManager
 {
@@ -20,7 +22,7 @@ private:
 public:
 	GameManager();
 	void play();
-	void update(Player &p);
+	void update(Player &p, Level &lv);
 	~GameManager();
 };
 

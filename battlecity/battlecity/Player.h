@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "tDirection.h"
 #include "Bullet.h"
+#include "Level1.h"
 class Player :
 	public GameObject
 {
@@ -14,12 +15,43 @@ private:
 public:
 	Player(String Name, float X, float Y, int W, int H, tDirection d);
 	void move(tDirection d, float time);
-	void update(float time);
+	void update(float time, Level &lv);
+	void checkCollision(Level &lv);
 	void setShooting(bool s);
 	bool shooting();
 	tDirection getDirection() {
 		return direction;
 	}
 	~Player();
+	float getDx()
+	{
+		return dx;
+	}
+
+	float getDy()
+	{
+		return dx;
+	}
+
+	float getX()
+	{
+		return x;
+	}
+
+	float getY()
+	{
+		return y;
+	}
+
+	void setY(float arg)
+	{
+		y = arg;
+	}
+
+	void setX(float arg)
+	{
+		x = arg;
+	}
+
 };
 

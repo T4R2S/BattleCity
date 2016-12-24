@@ -19,10 +19,10 @@ public:
 	Sprite getSprite() {
 		return sprite;
 	}
-	float getSpriteHeight() {
+	int getSpriteHeight() {
 		return spriteHeight;
 	}
-	float getSpriteWidth() {
+	int getSpriteWidth() {
 		return spriteWidth;
 	}
 	void setExistance(bool e) {

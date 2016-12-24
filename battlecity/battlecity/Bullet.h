@@ -2,6 +2,8 @@
 #include <SFML\Graphics.hpp>
 #include "GameObject.h"
 #include "tDirection.h"
+#include "TextureManager.h"
+#include <iostream>
 
 using namespace sf;
 

@@ -1,6 +1,6 @@
 #include "TextureManager.h"
 
-TextureManager::TextureManager(int widthWindow, int heightWindow)
+TextureManager::TextureManager()
 {
 	sprites.loadFromFile("images/sprites.png");
 	sprites.createMaskFromColor(Color(0,0,1));

@@ -1,7 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 using namespace sf;
-#include "Control.h"
 
 class TextureManager
 {
@@ -11,7 +10,7 @@ private:
 	Sprite bullet;
 	Sprite player;
 public:
-	TextureManager(int widthWindow, int heightWindow);
+	TextureManager();
 	Texture getMainTexture() {
 		return mainTexture;
 	}

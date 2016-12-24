@@ -119,7 +119,6 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="LevelBuilder.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TextureManager.cpp" />
@@ -131,7 +130,6 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Level1.h" />
-    <ClInclude Include="LevelBuilder.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="tDirection.h" />
     <ClInclude Include="TextureManager.h" />

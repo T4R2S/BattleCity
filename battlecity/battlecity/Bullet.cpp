@@ -1,6 +1,4 @@
 #include "Bullet.h"
-#include "TextureManager.h"
-#include <iostream>
 
 Bullet::Bullet(String Name, float X, float Y, int W, int H, tDirection direct) : GameObject(Name, X, Y, W, H) {
 	direction = direct;
@@ -28,7 +26,7 @@ Bullet::Bullet(String Name, float X, float Y, int W, int H, tDirection direct) :
 		dx = speed;
 		break;
 	}
-	TextureManager tm(W, H);
+	TextureManager tm;
 	texture = tm.getMainTexture();
 	sprite.setTexture(texture);
 }
