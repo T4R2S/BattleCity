@@ -11,20 +11,7 @@ Player::Player(String Name, float X, float Y, int W, int H, tDirection d) : Game
 	shoot = false;
 	texture = tm.getMainTexture();
 	sprite.setTexture(texture);
-	switch (direction) {
-	case up:
-		sprite.setTextureRect(IntRect(0, 0, 16, 16));
-		break;
-	case down:
-		sprite.setTextureRect(IntRect(80, 0, 16, 16));
-		break;
-	case left:
-		sprite.setTextureRect(IntRect(48, 0, 16, 16));
-		break;
-	case right:
-		sprite.setTextureRect(IntRect(112, 0, 16, 16));
-		break;
-	}
+	sprite.setTextureRect(IntRect(0, 0, 16, 16));
 }
 
 void Player::move(tDirection d, float time) {
@@ -34,46 +21,41 @@ void Player::move(tDirection d, float time) {
 		sprite.setTextureRect(IntRect(0, 0, 16, 16));
 		dy = -speed;
 		dx = 0;
-		x += dx*time;
-		y += dy*time;
 		break;
 	case down:
 		sprite.setTextureRect(IntRect(80, 0, 16, 16));
 		dy = speed;
 		dx = 0;
-		x += dx*time;
-		y += dy*time;
 		break;
 	case left:
 		sprite.setTextureRect(IntRect(48, 0, 16, 16));
 		dx = -speed;
-		dy = 0;
-		x += dx*time;
-		y += dy*time;
+		dy = 0;	
 		break;
 	case right:
 		sprite.setTextureRect(IntRect(112, 0, 16, 16));
 		dx = speed;
-		dy = 0;
-		x += dx*time;
-		y += dy*time;
+		dy = 0;	
 		break;
 	}
+
+	x += dx*time;
+	y += dy*time;
 }
 
 void Player::update(float time) {
 	if (Keyboard::isKeyPressed(Keyboard::A)) {
 		move(left, time);
-	}
+	} else
 	if (Keyboard::isKeyPressed(Keyboard::D)) {
 		move(right, time);
-	}
+	} else
 	if (Keyboard::isKeyPressed(Keyboard::W)) {
 		move(up, time);
-	}
+	} else
 	if (Keyboard::isKeyPressed(Keyboard::S)) {
 		move(down, time);
-	}
+	} else
 	if (Keyboard::isKeyPressed(Keyboard::Space)) {
 		shoot = true;
 	}

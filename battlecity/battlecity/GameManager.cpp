@@ -1,6 +1,5 @@
 #include "GameManager.h"
-#include "UnbreakableWall.h"
-#include "Level1.h"
+#include "LevelBuilder.h"
 #include <iostream>
 
 
@@ -13,6 +12,7 @@ GameManager::GameManager() {
 void GameManager::play() {
 	RenderWindow window(VideoMode(windowWidth, windowHeight), "test");
 	Player p("player1", 120, 120, windowWidth, windowHeight, up);
+	LevelBuilder lv(windowWidth, windowHeight);
 	window.setFramerateLimit(120);
 	while (window.isOpen()) {
 		Event event;
@@ -32,6 +32,7 @@ void GameManager::play() {
 		}
 		update(p);
 		window.clear(Color(0, 0, 0, 255));
+		lv.Draw(window);
 		for (bIterator = bullets.begin(); bIterator != bullets.end(); bIterator++) {
 			window.draw((*bIterator)->getSprite());
 		}
@@ -58,7 +59,11 @@ void GameManager::update(Player &p) {
 			bIterator = bullets.erase(bIterator);
 		}
 	}
+
 }
+
+
+
 
 
 GameManager::~GameManager()

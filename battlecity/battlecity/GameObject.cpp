@@ -1,5 +1,4 @@
 #include "GameObject.h"
-#include "SFML/Graphics.hpp"
 
 GameObject::GameObject(String Name, float X, float Y, int W, int H) {
 	windowWidth = W;
