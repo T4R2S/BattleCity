@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-
+#include "Level1.h"
 using namespace sf;
 
 class GameObject {
 protected:
 	float x, y; //object coordinates
+	float dx, dy;
 	float spriteHeight, spriteWidth; //sprite size
 	bool existance; //check, if object exists
 	int windowHeight, windowWidth; //window size
@@ -19,10 +20,10 @@ public:
 	Sprite getSprite() {
 		return sprite;
 	}
-	int getSpriteHeight() {
+	float getSpriteHeight() {
 		return spriteHeight;
 	}
-	int getSpriteWidth() {
+	float getSpriteWidth() {
 		return spriteWidth;
 	}
 	void setExistance(bool e) {
@@ -32,10 +33,14 @@ public:
 		return existance;
 	}
 	GameObject(String Name, float X, float Y, int W, int H);
-	void update(float time);
+	void update(float time, Level &lv);
+
+	void checkCollision(Level &lv);
+
 	float getX() {
 		return x;
 	}
+
 	float getY() {
 		return y;
 	}

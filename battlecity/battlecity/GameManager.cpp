@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include <sstream>
 
 
 const int HEIGHT_MAP = 25;//размер карты высота
@@ -6,31 +7,31 @@ const int WIDTH_MAP = 40;//размер карты ширина
 
 						 
 String TileMap[HEIGHT_MAP] = {
-"0000000000000000000000000000000000000000",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0                                      0",
-"0000000000000000000000000000000000000000",
+"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"S              00                      S",
+"S                                      S",
+"S                 0                    S",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"S             000000000                S",
+"S             0000                     S",
+"S             0000                     S",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"S                                      S",
+"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
 };
 
 GameManager::GameManager() {
@@ -43,22 +44,44 @@ void GameManager::play() {
 	RenderWindow window(VideoMode(windowWidth, windowHeight), "test");
 	Player p("player1", 120, 120, windowWidth, windowHeight, up);
 	Level lv(HEIGHT_MAP, WIDTH_MAP, TileMap);
-		
-	window.setFramerateLimit(120);
+	
+	Font font;
+	font.loadFromFile("CyrilicOld.ttf");
+	Text text("", font, 20);
+	text.setFillColor(Color::White);
+	text.setStyle(Text::Bold);
+
+	window.setFramerateLimit(60);
 	while (window.isOpen()) {
 		Event event;
 		time = clock.getElapsedTime().asMicroseconds();
 		clock.restart();
 		time = time / 800;
-		std::cout << time << std::endl;
+
+		
+		std::ostringstream gametime;    //std::cout << time << std::endl; 
+		
+		gametime << time;		
+		text.setString("¬рем€ игры: " + gametime.str());
+
+		text.setPosition(windowWidth-400, windowHeight-60);
+		
+
+		
 		while (window.pollEvent(event)) {
 			window.setKeyRepeatEnabled(false);
 			if (event.type == Event::Closed) {
 				window.close();
 			}
-			if (p.shooting()) {
-				p.setShooting(false);
-				bullets.push_back(new Bullet("PlayerBullet", p.getX() + 5, p.getY() + 5, windowWidth, windowHeight, p.getDirection()));
+			if (event.type == Event::KeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::Space)
+				{
+					if (p.shooting()) {
+						p.setShooting(false);
+						bullets.push_back(new Bullet("PlayerBullet", p.getX() + 5, p.getY() + 5, windowWidth, windowHeight, p.getDirection()));
+					}
+				}
 			}
 		}
 		update(p, lv);
@@ -69,6 +92,7 @@ void GameManager::play() {
 
 		lv.Draw(window);
 		window.draw(p.getSprite());
+		window.draw(text);
 		window.display();
 	}
 }
@@ -77,14 +101,16 @@ void GameManager::update(Player &p, Level &lv) {
 	p.update(time, lv);
 	bIterator = bullets.begin();
 	while (bIterator != bullets.end()) {
-		if (((*bIterator)->getX() > windowWidth) || ((*bIterator)->getX() < 0) || ((*bIterator)->getY() < 0) || ((*bIterator)->getY() > windowHeight)) {
+		if (((*bIterator)->getX() > windowWidth) || ((*bIterator)->getX() < 0) || ((*bIterator)->getY() < 0) || ((*bIterator)->getY() > windowHeight)) 
+		{
 			(*bIterator)->setExistance(false);
 		}
+
 		if ((*bIterator)->exists()) {
 			if ((*bIterator)->getName() == "PlayerBullet") {
 				p.setShooting(false);
 			}
-			(*bIterator)->update(time);
+			(*bIterator)->update(time, lv);
 			bIterator++;
 		}
 		else {

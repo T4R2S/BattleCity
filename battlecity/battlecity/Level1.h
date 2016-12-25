@@ -46,6 +46,11 @@ public:
 		return tileMap[h][w];
 	}
 
+	void setTile(char x, int h, int w)
+	{
+		tileMap[h][w] = x;
+	}
+
 	void Draw(sf::RenderWindow &wind)
 	{
 		for (int i = 0; i < heightMap; i++)
@@ -53,6 +58,7 @@ public:
 			{
 				if (tileMap[i][j] == '0')  map.setTextureRect(IntRect(256, 0, 16, 16));
 				if ((tileMap[i][j] == ' ')) map.setTextureRect(IntRect(340, 0, 16, 16));
+				if ((tileMap[i][j] == 'S')) map.setTextureRect(IntRect(255, 15, 16, 16));
 
 				map.setPosition(j * 16, i * 16);
 
