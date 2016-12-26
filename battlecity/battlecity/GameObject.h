@@ -32,7 +32,7 @@ public:
 	bool exists() {
 		return existance;
 	}
-	GameObject(String Name, float X, float Y, int W, int H);
+	GameObject(String Name, float X, float Y, int W, int H, Sprite &sprite);
 	void update(float time, Level &lv);
 
 	void checkCollision(Level &lv);

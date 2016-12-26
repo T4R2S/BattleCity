@@ -1,6 +1,7 @@
 #include "GameObject.h"
 
-GameObject::GameObject(String Name, float X, float Y, int W, int H) {
+GameObject::GameObject(String Name, float X, float Y, int W, int H, Sprite &sprite) {
+	GameObject::sprite = sprite;
 	windowWidth = W;
 	windowHeight = H;
 	x = X;

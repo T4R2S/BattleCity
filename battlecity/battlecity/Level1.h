@@ -12,8 +12,9 @@ private:
 	sf::Texture texture;
 	sf::Sprite map;
 public:
-	Level(int h, int w, String* tm)
+	Level(int h, int w, String* tm, Sprite &sprite)
 	{
+		map = sprite;
 		tileMap = new String[h];
 		heightMap = h;
 		widhtMap = w;
@@ -21,9 +22,10 @@ public:
 		{
 			tileMap[i] = tm[i];
 		}
+		/*
 		TextureManager textMan;
 		texture = textMan.getMainTexture();
-		map.setTexture(texture);
+		map.setTexture(texture);*/
 	}
 
 	~Level()

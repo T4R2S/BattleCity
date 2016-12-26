@@ -11,7 +11,7 @@ private:
 	float speed;
 	bool shoot;
 public:
-	Player(String Name, float X, float Y, int W, int H, tDirection d);
+	Player(String Name, float X, float Y, int W, int H, tDirection d, Sprite &sprite);
 	void move(tDirection d, float time);
 	void update(float time, Level &lv);
 	void setShooting(bool s);

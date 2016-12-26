@@ -42,8 +42,17 @@ GameManager::GameManager() {
 
 void GameManager::play() {
 	RenderWindow window(VideoMode(windowWidth, windowHeight), "test");
-	Player p("player1", 120, 120, windowWidth, windowHeight, up);
-	Level lv(HEIGHT_MAP, WIDTH_MAP, TileMap);
+
+	TextureManager tm;
+	Texture texture;
+	Sprite sprite;
+	texture = tm.getMainTexture();
+	sprite.setTexture(texture);
+
+	Player p("player1", 120, 120, windowWidth, windowHeight, up, sprite);
+	Level lv(HEIGHT_MAP, WIDTH_MAP, TileMap, sprite);
+
+	
 	
 	Font font;
 	font.loadFromFile("CyrilicOld.ttf");
@@ -79,7 +88,7 @@ void GameManager::play() {
 				{
 					if (p.shooting()) {
 						p.setShooting(false);
-						bullets.push_back(new Bullet("PlayerBullet", p.getX() + 5, p.getY() + 5, windowWidth, windowHeight, p.getDirection()));
+						bullets.push_back(new Bullet("PlayerBullet", p.getX() + 5, p.getY() + 5, windowWidth, windowHeight, p.getDirection(), sprite));
 					}
 				}
 			}
@@ -108,7 +117,7 @@ void GameManager::update(Player &p, Level &lv) {
 
 		if ((*bIterator)->exists()) {
 			if ((*bIterator)->getName() == "PlayerBullet") {
-				p.setShooting(false);
+				//Выставить задержку на следующий выстрел
 			}
 			(*bIterator)->update(time, lv);
 			bIterator++;

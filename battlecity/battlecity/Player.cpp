@@ -5,14 +5,16 @@
 #include "GameManager.h"
 
 
-Player::Player(String Name, float X, float Y, int W, int H, tDirection d) : GameObject(Name, X, Y, W, H) {
-	TextureManager tm;
+Player::Player(String Name, float X, float Y, int W, int H, tDirection d, Sprite &sprite) : GameObject(Name, X, Y, W, H, sprite) {
 	direction = d;
 	speed = 0.1;
 	shoot = false;
+	/*
+	TextureManager tm;
 	texture = tm.getMainTexture();
 	sprite.setTexture(texture);
-	sprite.setTextureRect(IntRect(0, 0, 16, 16));
+	*/
+	Player::sprite.setTextureRect(IntRect(0, 0, 16, 16));
 }
 
 void Player::move(tDirection d, float time) {
